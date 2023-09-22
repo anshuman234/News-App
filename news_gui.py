@@ -18,7 +18,7 @@ class News_app:
 
     def load_gui(self):
         self.root = Tk()
-        self.root.geometry('400x400')
+        self.root.geometry('400x600')
         self.root.resizable(0,0)
         self.root.configure(background='black')
 
@@ -30,22 +30,26 @@ class News_app:
     def load_news_item(self, index):
         self.clear()
         
-        # try:
+        try:
 
-        #     img_url =self.data['articles'][index]['urlToImage']
-        #     raw_data = urlopen(img_url).read()
-        #     img = Image.open(io.Bytes10(raw_data)).resize((350,250))
-        #     photo = ImageTk.PhotoImage(img)
+            img_url =self.data['articles'][index]['urlToImage']
+            raw_data = urlopen(img_url).read()
+            img = Image.open(io.Bytes10(raw_data)).resize((350,250))
+            photo = ImageTk.PhotoImage(img)
 
-        # except:
-        #     img_url = 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'
-        #     raw_data = urlopen(img_url).read()
-        #     img = Image.open(io.Bytes10(raw_data)).resize((350,250))
-        #     photo = ImageTk.PhotoImage(img)
+        except:
+            img_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6dTqo-pcNVpY6JpeYUJ7qAlHIPocHhDQQvFcFNvjs&s'
+            raw_data = urlopen(img_url).read()
+            img = Image.open(io.BytesIO(raw_data)).resize((350,250))
+            photo = ImageTk.PhotoImage(img)
 
 
-        # label = Label(self.root,image=photo)  
-        # label.pack()
+        label = Label(self.root,image=photo)  
+        label.pack()
+
+
+
+
 
         heading = Label(self.root,text=self.data['articles'][index]['title'],bg='black', fg='white', wraplength=350,justify='center')
         heading.pack(pady=(10,20))
@@ -60,10 +64,15 @@ class News_app:
         frame.pack(expand=True, fill=BOTH)
 
         if index !=0:
-            
+
+
             prev = Button(frame,text='Prev',width=18, height=3, command= lambda :self.load_news_item(index-1))
             prev.pack(side=LEFT)
 
+            
+
+            
+        
         if index != len(self.data['articles'])-1:
 
             next = Button(frame,text='Next',width=18, height=3, command= lambda :self.load_news_item(index+1))
@@ -75,7 +84,9 @@ class News_app:
 
         if index == len(self.data['articles'])-1:
             
+            
             read = Button(frame,text='Read More',width=18, height=3, command=lambda :self.open_link(self.data['articles'][index]['url']))
+            
             read.pack(side=RIGHT)
 
 
