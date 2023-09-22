@@ -47,10 +47,6 @@ class News_app:
         # label = Label(self.root,image=photo)  
         # label.pack()
 
-
-
-
-
         heading = Label(self.root,text=self.data['articles'][index]['title'],bg='black', fg='white', wraplength=350,justify='center')
         heading.pack(pady=(10,20))
         heading.config(font=('verdana',15))
@@ -64,15 +60,10 @@ class News_app:
         frame.pack(expand=True, fill=BOTH)
 
         if index !=0:
-
-
+            
             prev = Button(frame,text='Prev',width=18, height=3, command= lambda :self.load_news_item(index-1))
             prev.pack(side=LEFT)
 
-            
-
-            
-        
         if index != len(self.data['articles'])-1:
 
             next = Button(frame,text='Next',width=18, height=3, command= lambda :self.load_news_item(index+1))
@@ -84,9 +75,7 @@ class News_app:
 
         if index == len(self.data['articles'])-1:
             
-            
             read = Button(frame,text='Read More',width=18, height=3, command=lambda :self.open_link(self.data['articles'][index]['url']))
-            
             read.pack(side=RIGHT)
 
 
