@@ -34,7 +34,7 @@ class News_app:
 
             img_url =self.data['articles'][index]['urlToImage']
             raw_data = urlopen(img_url).read()
-            img = Image.open(io.Bytes10(raw_data)).resize((350,250))
+            img = Image.open(io.BytesIO(raw_data)).resize((350,250))
             photo = ImageTk.PhotoImage(img)
 
         except:
