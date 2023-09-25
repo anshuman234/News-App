@@ -18,9 +18,11 @@ class News_app:
 
     def load_gui(self):
         self.root = Tk()
+        self.root.title('News App')
         self.root.geometry('400x600')
         self.root.resizable(0,0)
         self.root.configure(background='black')
+        
 
     def clear(self):
         for i in self.root.pack_slaves():
