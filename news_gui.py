@@ -22,6 +22,8 @@ class News_app:
         self.root.geometry('400x600')
         self.root.resizable(0,0)
         self.root.configure(background='black')
+        p1 = PhotoImage(file = 'icon.png')
+        self.root.iconphoto(False, p1)
         
 
     def clear(self):
